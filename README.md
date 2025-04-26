@@ -1,4 +1,6 @@
-# LAPORAN PROYEK MACHINE LEARNING - Klasifikasi Kelayakan Kualitas Air Minum
+# Laporan Proyek Machine Learning & Deep Learning - Royan Rosyad
+
+## Water Quality and Potability Project
 
 ## Latar Belakang (Domain Proyek)
 
@@ -81,7 +83,7 @@ Kemudian, untuk meningkatkan pemahaman atas data terkait, dilakukannya _explorat
 Exploratory Data Analysis (EDA) adalah pendekatan analisis data yang bertujuan untuk memahami karakteristik utama dari kumpulan data. EDA melibatkan penggunaan teknik statistik dan visualisasi grafis untuk menemukan pola, hubungan, atau anomali untuk membentuk hipotesis. Proses ini sering kali tidak terstruktur dan dianggap sebagai langkah awal penting dalam analisis data yang membantu menentukan arah analisis lebih lanjut.
 
 Berikut ini adalah EDA yang dilakukan:
-- ```python
+ ```python
   dataset.shape
   ```
   Kode diatas memiliki output:
@@ -90,7 +92,7 @@ Berikut ini adalah EDA yang dilakukan:
   ```
 
   Berdasarkan _output_ tersebut, didapatkan informasi bahwa dataset ini memiliki **3276 baris** dan **10 kolom** data sesuai dengan dengan keterangan yang tertera diatas. Pada bagian ini, belum dapat diketahui **nama** dari **kolom-kolom** yang ada.
-- ```python
+ ```python
    dataset.keys()
   ```
   Kode diatas memiliki output:
@@ -101,7 +103,7 @@ Berikut ini adalah EDA yang dilakukan:
   ```
 
   Berdasarkan _output_ tersebut, didapatkan informasi lebih lanjut bahwa dataset ini memiliki 10 kolom sesuai dengan keterangan yang tertera diatas. Pada bagian ini, belum dapat diketahui **jumlah** dan **tipe data** dari tiap kolom.
-- ```python
+ ```python
    dataset.info()
   ```
   Kode diatas memiliki output:
@@ -124,7 +126,7 @@ Berikut ini adalah EDA yang dilakukan:
   ```
 
    Berdasarkan _output_ tersebut, didapatkan informasi mengenai jumlah data dan tipe data dari setiap kolom yang ada. Ada beberapa kolom yang tidak miliki jumlah data sesuai dengan total baris, yaitu 3276 baris. Hal ini mengindikasikan adanya _missing value_. Kemudian, hanya 1 kolom yang bertipe ```int64```, yaitu kolom ```'Potability'```. Kolom lainnya bertipe ```float64```.
-- ```python
+ ```python
    df.describe().T
   ```
   Kode diatas memiliki output:
@@ -183,13 +185,13 @@ Dari hasil analisis tersebut, teridentifikasi adanya sejumlah nilai yang hilang 
     ![Univariate Analysis](https://github.com/user-attachments/assets/818b98a4-5dbe-4457-896f-87cfeed56218)
     <div align="center">Gambar 1.1 - Univariate Analysis Categorical Column</div>
 
-  Berdasarkan visualisasi pada ``` Gambar 1.1  ``` , dapat diamati bahwa variabel ```Potability``` memiliki dua nilai unik, yaitu '1' yang mengindikasikan air minum layak dikonsumsi dan '0' yang mengindikasikan sebaliknya. Akan tetapi, visualisasi tersebut juga memperlihatkan adanya ketidakseimbangan data (_imbalance data_). Jumlah baris data dengan nilai '0' mencapai hampir 2000, sementara nilai '1' hanya memiliki sekitar 1250 baris data. Mengingat kondisi ini, tindakan penyeimbangan data menjadi krusial untuk menghindari terjadinya bias pada model _machine learning_ yang akan dikembangkan.
+  Berdasarkan visualisasi pada ``` Gambar 1.1  ``` , dapat diamati bahwa variabel ```Potability``` memiliki dua nilai unik, yaitu '1' yang mengindikasikan air minum layak dikonsumsi dan '0' yang mengindikasikan sebaliknya. Akan tetapi, visualisasi tersebut juga          memperlihatkan adanya ketidakseimbangan data (_imbalance data_). Jumlah baris data dengan nilai '0' mencapai hampir 2000, sementara nilai '1' hanya memiliki sekitar 1250 baris data. Mengingat kondisi ini, tindakan penyeimbangan data menjadi krusial untuk               menghindari terjadinya bias pada model _machine learning_ yang akan dikembangkan.
 
   ![Distribusi Numerical Fitur](https://github.com/user-attachments/assets/3fc00fbc-fc2c-475a-ad54-50484de4d225)
   <div align="center">Gambar 1.2 - Distribution of Numerical Feature</div>
   
   
-  Merujuk pada visualisasi dalam ```Gambar 1.2```, yang menyajikan distribusi untuk setiap kolom numerik dalam dataset (```pH```, ```Hardness```, ```Solids```, ```Chrolamines```, ```Sulfate```, ```Conductivity```, ```Organic_carbon```, ```Trihalomethanes```, ```Turbidity```), terlihat bahwa hanya kolom ```Solids``` dan ```Conductivity``` yang menunjukkan kemiringan (skewness) ke kiri. Informasi ringkas yang dapat disarikan dari visualisasi tersebut adalah sebagai berikut:
+  Merujuk pada visualisasi dalam ```Gambar 1.2```, yang menyajikan distribusi untuk setiap kolom numerik dalam dataset (```pH```, ```Hardness```, ```Solids```, ```Chrolamines```, ```Sulfate```, ```Conductivity```, ```Organic_carbon```, ```Trihalomethanes```,             ```Turbidity```), terlihat bahwa hanya kolom ```Solids``` dan ```Conductivity``` yang menunjukkan kemiringan (skewness) ke kiri. Informasi ringkas yang dapat disarikan dari visualisasi tersebut adalah sebagai berikut:
 
    - ```pH```: Tingkat keasaman air bervariasi dari 0 hingga 14, dengan mayoritas sampel memiliki nilai pH di sekitar 7, yang menandakan kondisi netral.
    - ```Hardness```: Tingkat kesadahan air beragam, dengan konsentrasi sampel yang signifikan menunjukkan tingkat kesadahan sekitar 200.
@@ -202,7 +204,7 @@ Dari hasil analisis tersebut, teridentifikasi adanya sejumlah nilai yang hilang 
    - ```Turbidity```: Tingkat kekeruhan sampel memiliki frekuensi tertinggi di sekitar nilai 3,5.
 
   
-- _Multivariate Analysis_
+  **Multivariate Analysis**
 
   _Multivariate Analysis_ adalah prosedur statistik yang digunakan untuk memeriksa hubungan antara beberapa variabel secara bersamaan. Teknik ini mencakup berbagai metode seperti regresi berganda, analisis faktor, dan analisis kluster, yang membantu dalam memahami struktur dan pola yang kompleks dalam data dengan lebih dari satu variabel.
 
