@@ -84,16 +84,16 @@ Exploratory Data Analysis (EDA) adalah pendekatan analisis data yang bertujuan u
 
 Berikut ini adalah EDA yang dilakukan:
  ```python
-  dataset.shape
+  df.shape
   ```
   Kode diatas memiliki output:
   ```python
   (3276, 10)
   ```
 
-  Berdasarkan _output_ tersebut, didapatkan informasi bahwa dataset ini memiliki **3276 baris** dan **10 kolom** data sesuai dengan dengan keterangan yang tertera diatas. Pada bagian ini, belum dapat diketahui **nama** dari **kolom-kolom** yang ada.
+  Berdasarkan _output_ tersebut, didapatkan informasi bahwa df ini memiliki **3276 baris** dan **10 kolom** data sesuai dengan dengan keterangan yang tertera diatas. Pada bagian ini, belum dapat diketahui **nama** dari **kolom-kolom** yang ada.
  ```python
-   dataset.keys()
+   df.keys()
   ```
   Kode diatas memiliki output:
   ```python
@@ -104,7 +104,7 @@ Berikut ini adalah EDA yang dilakukan:
 
   Berdasarkan _output_ tersebut, didapatkan informasi lebih lanjut bahwa dataset ini memiliki 10 kolom sesuai dengan keterangan yang tertera diatas. Pada bagian ini, belum dapat diketahui **jumlah** dan **tipe data** dari tiap kolom.
  ```python
-   dataset.info()
+   df.info()
   ```
   Kode diatas memiliki output:
   ```python
@@ -158,7 +158,7 @@ Berdasarkan _output_ yang diberikan, dapat diperoleh informasi mengenai statisti
 - ```max```: Menyajikan nilai tertinggi yang terdapat pada sebuah kolom.
 
 - ```python
-  dataset.isnull().sum()
+  df.isnull().sum()
   ```
   
   ```python
@@ -255,7 +255,7 @@ _Data Preparation_ adalah proses pembersihan, transformasi, dan pengorganisasian
       Berikut ini adalah proses pendeteksian dan penghapusan data duplikatnya:
       ```python
       # Cek baris duplikat dalam dataset
-      duplicates = dataset.duplicated()
+      duplicates = df.duplicated()
       
       # Hitung jumlah baris duplikat
       duplicate_count = duplicates.sum()
