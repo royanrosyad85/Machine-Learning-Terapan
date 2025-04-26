@@ -2,7 +2,7 @@
 
 ## Water Quality and Potability Project
 
-## Latar Belakang (Domain Proyek)
+**Latar Belakang (Domain Proyek)**
 
 Air merupakan salah satu kebutuhan dasar manusia yang tidak dapat dipisahkan dari kehidupan sehari-hari [[1]([https://ojs.serambimekkah.ac.id/jurnal-biologi/article/view/1592](https://doi.org/10.24002/konstelasi.v2i1.5630))]. Fungsi air bagi tubuh sangat vital karena ia menjadi elemen utama untuk menjaga kesehatan dan memastikan fungsi organ tubuh berjalan optimal. Air tidak hanya mendukung proses pencernaan dan penyerapan nutrisi, tetapi juga membantu mengeluarkan sisa metabolisme dari tubuh [[2](https://doi.org/10.1109/csnt57126.2023.10134661.)]. Selain itu, air memiliki peran penting dalam menjaga suhu tubuh stabil, mengatur tekanan darah, serta melumasi sendi-sendi. Kurangnya konsumsi air dapat menyebabkan dehidrasi, yang jika dibiarkan tanpa penanganan dapat berakibat fatal [[3](https://ijhn.ub.ac.id/index.php/ijhn/article/view/114](https://doi.org/10.58864/mrijet.2023.10.1.8))]. Oleh karena itu, setiap individu harus memastikan konsumsi air yang cukup setiap hari untuk menjaga kesehatan tubuh.
 
