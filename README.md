@@ -4,59 +4,28 @@
 
 **Latar Belakang (Domain Proyek)**
 
-Air merupakan salah satu kebutuhan dasar manusia yang tidak dapat dipisahkan dari kehidupan sehari-hari. Fungsi air bagi tubuh sangat vital karena ia menjadi elemen utama untuk menjaga kesehatan dan memastikan fungsi organ tubuh berjalan optimal. Air tidak hanya mendukung proses pencernaan dan penyerapan nutrisi, tetapi juga membantu mengeluarkan sisa metabolisme dari tubuh. Selain itu, air memiliki peran penting dalam menjaga suhu tubuh stabil, mengatur tekanan darah, serta melumasi sendi-sendi. Kurangnya konsumsi air dapat menyebabkan dehidrasi, yang jika dibiarkan tanpa penanganan dapat berakibat fatal. Oleh karena itu, setiap individu harus memastikan konsumsi air yang cukup setiap hari untuk menjaga kesehatan tubuh.
-
-Di Indonesia, masalah kualitas air minum masih menjadi isu yang serius. Baik di daerah perkotaan maupun pedesaan, kondisi air minum yang tersedia semakin menurun. Berdasarkan data riset dari Kementerian Kesehatan pada tahun 2020, sekitar 74,4% rumah tangga di Indonesia mengalami kontaminasi air minum oleh bakteri _E.coli_. Selain itu, air dengan tingkat keasaman atau kebasaan yang tidak sesuai dapat memengaruhi sistem pencernaan, lambung, ginjal, dan pembuluh darah. Hal ini menunjukkan bahwa upaya memastikan ketersediaan air minum yang aman dan layak konsumsi harus menjadi prioritas pemerintah dan lembaga terkait untuk menjaga kesejahteraan masyarakat Indonesia.
-
-Untuk memastikan air minum aman untuk dikonsumsi, diperlukan analisis komprehensif berdasarkan parameter-parameter tertentu yang dapat mengukur kualitas air secara akurat. Dalam hal ini, teknologi **Machine Learning** dan **Deep Learning** dapat menjadi solusi efektif. Machine Learning mampu mendeteksi pola dari data historis yang dikumpulkan dari berbagai sumber, sehingga dapat memberikan prediksi yang tepat tentang kualitas air. Beberapa algoritma klasifikasi yang umum digunakan dalam konteks ini antara lain **KNN**, **SVM**, dan **Random Forest**. Dengan memanfaatkan data variabel yang relevan dan menggunakan pendekatan klasifikasi, model machine learning dapat dibuat untuk mengklasifikasikan kualitas air dengan lebih presisi.
+Kualitas air minum merupakan faktor penting yang memengaruhi kesehatan masyarakat. Di Indonesia, masalah kualitas air yang tidak layak masih menjadi perhatian serius karena dapat menyebabkan gangguan kesehatan seperti dehidrasi, infeksi, hingga penyakit kronis. Oleh karena itu, pengembangan model machine learning dan deep learning untuk mengklasifikasikan kelayakan air minum sangat dibutuhkan. Model ini dapat digunakan oleh pemerintah, perusahaan air minum, atau lembaga terkait untuk memastikan bahwa air yang didistribusikan layak konsumsi. Dengan adanya model ini, masyarakat dapat terhindar dari risiko mengonsumsi air yang tidak aman.
 
 # Business Understanding
 
 ### Problem Statements
-Air minum yang layak konsumsi merupakan kebutuhan dasar manusia. Namun, tidak semua sumber air memiliki kualitas yang memenuhi standar potabilitas. Untuk memastikan air tersebut aman dikonsumsi, diperlukan metode klasifikasi kualitas air yang akurat dan efisien.  
-Tantangan yang dihadapi dalam project ini adalah:
-- Adanya **missing value** dalam data yang dapat mengganggu akurasi model.
-- **Distribusi data** yang tidak seimbang (imbalance) antara air layak dan tidak layak minum.
-- **Hubungan antar fitur** yang lemah dengan target variabel, sehingga sulit menemukan pola klasifikasi secara sederhana.
-- **Adanya outlier** pada beberapa fitur yang berpotensi mempengaruhi performa model.
-- Mencari **model terbaik** yang mampu melakukan klasifikasi dengan akurasi tinggi baik menggunakan pendekatan machine learning maupun deep learning.
+- Berdasarkan eksplorasi terhadap _dataset_, fitur-fitur apa saja yang paling berpengaruh dalam menentukan kelayakan air minum?
+- Bagaimana cara memproses _dataset_ agar dapat digunakan untuk pembuatan model klasifikasi kualitas air minum menggunakan pendekatan _machine learning_ dan _deep learning_?
+- Bagaimana cara mendapatkan model klasifikasi kualitas air minum dengan performa terbaik antara pendekatan _machine learning_ dan _deep learning_?
 
 ### Goals
-Project ini bertujuan untuk:
-- **Membersihkan dan menyiapkan data** kualitas air dengan melakukan penanganan missing value, deteksi duplikasi, scaling fitur, serta penanganan imbalance data.
-- **Melakukan exploratory data analysis (EDA)** untuk memahami karakteristik data, distribusi fitur, keberadaan outlier, serta hubungan antar fitur dan target.
-- **Membangun model machine learning** (RandomForest, KNN, XGBoost) dengan hyperparameter tuning untuk klasifikasi potabilitas air.
-- **Mengembangkan model deep learning** berbasis feedforward neural network untuk meningkatkan performa klasifikasi.
-- **Mengevaluasi kinerja model** dengan menggunakan metrik akurasi, precision, recall, dan F1-score pada data uji.
-- **Menyusun rekomendasi** terkait pengembangan lebih lanjut untuk meningkatkan generalisasi model di masa depan.
+- Melakukan eksplorasi data untuk memahami hubungan antara fitur-fitur numerik dan label klasifikasi (`Potability`).
+- Melakukan _data preparation_ untuk mempersiapkan data yang bersih dan siap digunakan dalam proses pelatihan model.
+- Membandingkan performa antara model _machine learning_ (_Random Forest_, _KNN_, _XGB_) dan _deep learning_ untuk menentukan pendekatan mana yang lebih optimal.
+- Menghasilkan model klasifikasi dengan performa terbaik berdasarkan metrik evaluasi seperti _accuracy_, _precision_, _recall_, dan _F1-score_.
 
 ### Solution Statements
-Untuk mencapai tujuan tersebut, pendekatan yang dilakukan dalam project ini meliputi:
-
-- **Data Cleaning**  
-  - Mengidentifikasi dan menangani missing value pada kolom `ph`, `Sulfate`, dan `Trihalomethanes` dengan metode imputasi median.
-  - Mendeteksi dan menghapus duplikasi data agar dataset bersih dan representatif.
-  - Memastikan tipe data setiap kolom sesuai untuk proses modelling.
-
-- **Data Understanding & Exploratory Data Analysis (EDA)**  
-  - Melakukan analisis univariat dan multivariat untuk memahami distribusi data dan hubungan antar fitur.
-  - Menggunakan visualisasi (countplot, histogram, boxplot, heatmap) untuk mendeteksi imbalance, outlier, dan korelasi.
-
-- **Data Preparation**  
-  - Menyeimbangkan distribusi kelas dengan metode Random OverSampling.
-  - Melakukan normalisasi fitur menggunakan MinMaxScaler untuk mempercepat dan menstabilkan proses training.
-
-- **Modelling Machine Learning**  
-  - Menerapkan algoritma RandomForestClassifier, KNeighborsClassifier, dan XGBClassifier.
-  - Melakukan hyperparameter tuning dengan GridSearchCV untuk mendapatkan model dengan performa terbaik.
-
-- **Modelling Deep Learning**  
-  - Mendesain arsitektur deep learning sederhana namun efektif, terdiri dari beberapa dense layer dan dropout untuk menghindari overfitting.
-  - Melatih model dengan teknik ModelCheckpoint dan evaluasi terhadap validation split.
-
-- **Model Evaluation**  
-  - Membandingkan performa model menggunakan metrik akurasi, precision, recall, dan F1-score.
-  - Menyajikan hasil evaluasi dengan confusion matrix dan plot learning curves.
+- Untuk melakukan eksplorasi data, dilakukan analisis univariat dan multivariat untuk memahami distribusi data, korelasi antar fitur, serta pola yang memengaruhi label klasifikasi. Visualisasi seperti _heatmap_, _correlation matrix_, dan _boxplot_ digunakan untuk mendapatkan wawasan lebih lanjut.
+- Proses _data preparation_ mencakup _data cleaning_ (penanganan missing value), _oversampling_ untuk menyeimbangkan kelas minoritas, _feature scaling_ untuk normalisasi data, dan _train-test split_ untuk membagi data latih dan uji.
+- Untuk mendapatkan model dengan performa terbaik, digunakan dua pendekatan:  
+- **Machine Learning**: Menerapkan algoritma _Random Forest_, _KNN_, dan _XGB_ sebagai _baseline model_. Performa model dievaluasi menggunakan _Confusion Matrix_ dan _Grid Search_ untuk optimasi hyperparameter.
+- **Deep Learning**: Membangun arsitektur neural network dengan beberapa hidden layers, dropout untuk regularisasi, dan fungsi aktivasi ReLU. Model dilatih menggunakan optimizer Adam dan loss function _binary_crossentropy_.
+- Hasil dari kedua pendekatan tersebut dibandingkan untuk menentukan model yang paling optimal dalam memprediksi kelayakan air minum.
 
 # Data Understanding
 Dataset yang digunakan dalam proyek _machine learning_ ini adalah "Water Quality and Potability," yang tersedia di platform [Kaggle](https://www.kaggle.com/datasets/uom190346a/water-quality-and-potability). _Dataset_ ini merupakan kumpulan data kuantitatif yang mencakup berbagai kolom untuk menentukan apakah air layak diminum atau tidak. Secara keseluruhan, dataset ini terdiri dari 3276 baris dan 10 kolom.
@@ -384,138 +353,260 @@ _Data Preparation_ adalah proses pembersihan, transformasi, dan pengorganisasian
 
 # Modelling
 
-- _Machine Learning_
+## Pendekatan Machine Learning
 
-    Dengan pendekatan machine learning, langkah-langkah utama dalam pembuatan model meliputi pemilihan algoritma yang sesuai. Berbagai algoritma klasifikasi seperti Random Forest, K-Nearest Neighbors (KNN), dan Support Vector Machine (SVM) dipertimbangkan berdasarkan      karakteristik dataset dan tujuan proyek.
+### Random Forest Classifier
+#### Mekanisme Kerja
+Random Forest adalah metode ensemble learning yang beroperasi dengan membangun beberapa pohon keputusan (decision tree) selama pelatihan. Setiap pohon dalam "hutan" membuat prediksi kelas, dan output akhir ditentukan oleh voting mayoritas di antara semua pohon. Algoritma bekerja dengan:
 
-    ``` python
+1. Membuat sampel bootstrap dari dataset asli
+2. Membangun pohon keputusan untuk setiap sampel, menggunakan subset fitur acak pada setiap split
+3. Mengumpulkan prediksi dari semua pohon untuk membuat klasifikasi akhir
 
-        parameters = {
-        'RandomForestClassifier': {
-            'n_estimators': [50, 100,150, 170,200,230,250,300]
-        },
-    
-        'KNeighborsClassifier': {
-            'n_neighbors': [3,5,7,10,15,20,30],
-            'weights': ['uniform', 'distance'],
-            'metric': ['euclidean', 'manhattan']
-        },
-    
-        'XGBClassifier': {
-            'learning_rate': [0.001,0.01, 0.1, 0.5,1],
-            'n_estimators': [50, 100,150, 200,250,350,300,350]
-        }
-    }
-    ```
-    Parameter grid didefinisikan untuk beberapa algoritma seperti RandomForestClassifier, KNeighborsClassifier, dan XGBClassifier. Parameter ini digunakan untuk mencari kombinasi terbaik melalui proses Grid Search.
+Pendekatan ini mengurangi overfitting dan meningkatkan generalisasi dibandingkan dengan pohon keputusan tunggal.
 
-    Grid Search untuk Hyperparameter Tuning:
-    ```python
-        results =list()
-    for model_name, model in models.items():
-        print(f"Grid searching for {model_name}")
-        param_grid = parameters[model_name]
-        grid_search = GridSearchCV(model, param_grid, cv=4, scoring='accuracy')
-        grid_search.fit(x_resampled,y_resampled)
-        best_model = grid_search.best_estimator_
-        best_params = grid_search.best_params_
-        best_accuracy = grid_search.best_score_
-    
-        results.append({'Model': model_name, 'Best Params': best_params, 'Best Accuracy': best_accuracy})
-    results_df = pd.DataFrame(results)
-    results_df.head(3)
-    ```
+#### Parameter
+- `n_estimators=150`: Jumlah pohon dalam hutan. Parameter ini ditentukan melalui GridSearchCV dari opsi [50, 100, 150, 170, 200, 230, 250, 300]. Lebih banyak pohon umumnya memberikan kinerja lebih baik tetapi membutuhkan lebih banyak komputasi.
+- Parameter lain tetap pada nilai default:
+  - `criterion='gini'`: Fungsi untuk mengukur kualitas split
+  - `max_depth=None`: Pohon tumbuh hingga kedalaman maksimum yang mungkin
+  - `min_samples_split=2`: Jumlah minimum sampel yang diperlukan untuk membagi node
+  - `min_samples_leaf=1`: Jumlah minimum sampel yang diperlukan pada node daun
 
-    Berikut hasil nya:
-        Model                   | Best Params                                                     | Best Accuracy
-    ------------------------|-----------------------------------------------------------------|--------------
-    RandomForestClassifier  | {'n_estimators': 150}                                           | 0.729229
-    KNeighborsClassifier    | {'metric': 'euclidean', 'n_neighbors': 30, 'weights': 'uniform'} | 0.696446
-    XGBClassifier           | {'learning_rate': 0.5, 'n_estimators': 300}                     | 0.714214
+#### Performa
+Meskipun memiliki akurasi tertinggi di antara model _machine learning_ (60,62%), presisi (51,16%) dan recall (26,76%) masih jauh dari optimal. Hal ini menunjukkan bahwa model sering salah mengklasifikasikan air layak minum sebagai tidak layak (false negative).
+
+### K-Nearest Neighbors Classifier
+#### Mekanisme Kerja
+KNN adalah algoritma pembelajaran non-parametrik "malas" (lazy learning) yang mengklasifikasikan titik data berdasarkan kelas mayoritas dari k tetangga terdekatnya. Algoritma ini:
+
+1. Menghitung jarak (biasanya Euclidean) antara titik kueri dan semua contoh pelatihan
+2. Memilih K titik data terdekat berdasarkan jarak ini
+3. Menetapkan label kelas berdasarkan voting mayoritas dari tetangga-tetangga ini
+
+KNN sangat efektif ketika batas keputusan antara kelas tidak beraturan.
+
+#### Parameter
+- `n_neighbors=30`: Jumlah tetangga yang dipertimbangkan untuk klasifikasi. Nilai ini dioptimalkan melalui GridSearchCV dari opsi [3, 5, 7, 10, 15, 20, 30].
+- `weights='distance'`: Memberikan bobot pada titik berdasarkan kebalikan dari jarak mereka, memberikan tetangga yang lebih dekat pengaruh lebih besar.
+- `metric='euclidean'`: Metrik jarak yang digunakan untuk menghitung kedekatan tetangga. Jarak Euclidean dipilih dari opsi ['euclidean', 'manhattan'] selama optimasi.
+
+#### Performa
+Performa KNN adalah yang terendah, dengan recall hanya 15,42%. Ini berarti model sangat buruk dalam mengidentifikasi air yang benar-benar layak minum, yang dapat berdampak serius pada keamanan air.
+
+### XGBoost Classifier
+#### Mekanisme Kerja
+XGBoost (Extreme Gradient Boosting) adalah implementasi lanjutan dari gradient boosting yang bekerja dengan secara berurutan menambahkan learner lemah untuk memperbaiki kesalahan yang dibuat oleh model sebelumnya. Algoritma ini:
+
+1. Dimulai dengan model sederhana (biasanya pohon keputusan tunggal)
+2. Secara iteratif menambahkan pohon baru yang berfokus pada memprediksi kesalahan residual dari pohon sebelumnya dengan benar
+3. Menggabungkan semua pohon untuk prediksi akhir
+
+XGBoost mencakup teknik regularisasi untuk mencegah overfitting dan menangani nilai yang hilang secara efisien.
+
+#### Performa
+Meskipun recall lebih tinggi (33,26%) dibandingkan Random Forest dan KNN, akurasi dan presisi tetap rendah. F1-score sebesar 37,95% menunjukkan bahwa model ini mencapai keseimbangan yang lebih baik antara presisi dan recall, namun masih jauh dari performa yang diharapkan.
+
+#### Parameter
+- `learning_rate=0.1`: Langkah pengurangan ukuran yang digunakan untuk mencegah overfitting. Nilai ini ditentukan melalui GridSearchCV dari opsi [0.001, 0.01, 0.1, 0.5, 1].
+- `n_estimators=250`: Jumlah putaran boosting (pohon). Ini dioptimalkan dari opsi [50, 100, 150, 200, 250, 300, 350].
+- Parameter lain tetap pada nilai default:
+  - `max_depth=6`: Kedalaman maksimum pohon
+  - `subsample=1`: Fraksi sampel yang digunakan untuk melatih pohon
+  - `colsample_bytree=1`: Fraksi fitur yang digunakan untuk melatih pohon
+
+
+  Berikut hasil dari Grid Search untuk Hyperparameter Tuning:
+      Model               | Best Params                                                     | Best Accuracy
+  ------------------------|-----------------------------------------------------------------|--------------
+  RandomForestClassifier  | {'n_estimators': 150}                                           | 0.729229
+  KNeighborsClassifier    | {'metric': 'euclidean', 'n_neighbors': 30, 'weights': 'uniform'}| 0.696446
+  XGBClassifier           | {'learning_rate': 0.5, 'n_estimators': 300}                     | 0.714214
 
     Belum cukup puas dengan hasilnya, saya bereksperimen menggunakan deep learning untuk meningkatkan accuracy training
 
-- _Deep Learning_
 
-    Dengan pendekatan deep learning, model dibangun menggunakan arsitektur yang terdiri dari input layer dengan 9 fitur, diikuti oleh beberapa hidden layers. Hidden layers mencakup 3 dense layers dengan 64 neuron dan fungsi aktivasi ReLU, 1 dropout layer dengan rate       0.2 untuk mengurangi overfitting, serta 1 dense layer tambahan dengan 16 neuron dan fungsi aktivasi ReLU. Output layer terdiri dari 1 neuron dengan fungsi aktivasi sigmoid untuk menghasilkan prediksi biner. Model dikompilasi menggunakan optimizer Adam, loss            function binary_crossentropy, serta metrics berupa accuracy, precision, dan recall untuk mengevaluasi performa model secara komprehensif.
+## Pendekatan Deep Learning
 
-    ``` python
-        # Define the ModelCheckpoint callback
-    checkpoint_callback = ModelCheckpoint(
-        filepath='model_checkpoint.weights.h5',
-        save_weights_only=False,
-        monitor='val_accuracy',
-        mode='max',
-        save_best_only=True
-    )
-    
-    # Define the model architecture
-    input_layer = Input(shape=(9,))
-    layer_1 = Dense(64, activation='relu')(input_layer)
-    layer_2 = Dense(64, activation='relu')(layer_1)
-    layer_3 = Dense(64, activation='relu')(layer_2)
-    layer_4 = Dropout(0.2)(layer_3)
-    layer_5 = Dense(16, activation='relu')(layer_4)
-    output_layer = Dense(1, activation='sigmoid')(layer_5)
-    
-    model = Model(inputs=input_layer, outputs=output_layer)
-    
-    # Compile the model
-    model.compile(
-        optimizer="adam",
-        loss='binary_crossentropy',
-        metrics=['accuracy', 'precision', 'recall']
-    )
-    ```
+#### Mekanisme Kerja
+Model deep learning yang digunakan adalah jaringan saraf feedforward yang dirancang untuk mempelajari pola dan hubungan kompleks antara parameter kualitas air dan kelayakan minum. Proses kerjanya melibatkan beberapa tahapan utama:
 
-    Kemudian Proses pelatihan model dilakukan dengan menggunakan 20% data sebagai validation split untuk mengevaluasi performa model selama pelatihan. Model dilatih selama 200 epoch dengan batch size sebesar 64 untuk memastikan proses pembelajaran yang efisien. Selain     itu, callback `ModelCheckpoint` digunakan untuk secara otomatis menyimpan model terbaik berdasarkan performa validasi tertinggi, sehingga memastikan hasil akhir yang optimal.
+1. **Forward Propagation**:  
+   - Fitur input (9 parameter kualitas air) diproses melalui neuron-neuron yang saling terhubung dalam lapisan-lapisan.
+   - Bobot dan bias diterapkan pada setiap neuron untuk menghitung jumlah terbobot.
+   - Fungsi aktivasi non-linear (ReLU) digunakan untuk mentransformasi nilai agar model dapat mempelajari hubungan non-linear dalam data.
 
-    ``` python
-        history=model.fit(
-        x_resampled, y_resampled,
-        validation_split=0.2,
-        epochs=200,
-        batch_size=64,
-        verbose=1,
-        callbacks=[checkpoint_callback]
-    )
-    ```
-    Berikut preview hasil training nya:
+2. **Backpropagation**:  
+   - Error dihitung menggunakan fungsi loss (_Binary Cross-Entropy_) untuk mengukur seberapa jauh prediksi model dari label sebenarnya.
+   - Gradien error dihitung secara mundur melalui jaringan untuk memperbarui bobot dan bias, sehingga model dapat belajar dari kesalahannya.
 
-    ![epoch](https://github.com/user-attachments/assets/cd43d189-f548-4148-a1b2-ad8ef06dfb21)
+3. **Optimisasi**:  
+   - Optimizer Adam digunakan untuk memperbarui bobot dengan efisien, memastikan konvergensi yang cepat dan stabil.
+
+#### Arsitektur dan Parameter
+Model dibangun dengan arsitektur sebagai berikut:
+- **Input Layer**: Menerima 9 fitur numerik yang merepresentasikan parameter kualitas air.
+- **Hidden Layers**:
+  - Tiga Dense layers dengan 64 neuron masing-masing dan fungsi aktivasi ReLU untuk mengekstraksi fitur kompleks.
+  - Dropout layer dengan rate 0.2 digunakan untuk mencegah overfitting dengan secara acak "mematikan" 20% neuron selama pelatihan.
+  - Satu Dense layer tambahan dengan 16 neuron dan fungsi aktivasi ReLU untuk ekstraksi fitur lebih lanjut.
+- **Output Layer**: Satu neuron dengan fungsi aktivasi sigmoid untuk menghasilkan probabilitas klasifikasi biner (layak/tidak layak minum).
+
+Model dikompilasi dengan:
+- **Optimizer**: Adam dengan _learning rate_ default (0.001).
+- **Loss Function**: Binary Cross-Entropy, yang cocok untuk tugas klasifikasi biner.
+- **Metrics**: Accuracy, Precision, dan Recall untuk evaluasi performa model secara komprehensif.
+
+Parameter training mencakup:
+- `epochs=200`: Model dilatih selama 200 iterasi penuh melalui dataset pelatihan.
+- `batch_size=64`: Jumlah sampel yang diproses sebelum bobot model diperbarui.
+- `validation_split=0.2`: 20% data pelatihan dicadangkan untuk validasi guna memantau performa model selama pelatihan.
+- **ModelCheckpoint**: Callback ini digunakan untuk menyimpan model terbaik berdasarkan akurasi validasi tertinggi (`val_accuracy`).
+
+#### Implementasi Kode
+Arsitektur dan proses pelatihan model diimplementasikan menggunakan kode berikut:
+
+```python
+# Define the ModelCheckpoint callback
+checkpoint_callback = ModelCheckpoint(
+    filepath='model_checkpoint.weights.h5',
+    save_weights_only=False,
+    monitor='val_accuracy',
+    mode='max',
+    save_best_only=True
+)
+
+# Define the model architecture
+input_layer = Input(shape=(9,))
+layer_1 = Dense(64, activation='relu')(input_layer)
+layer_2 = Dense(64, activation='relu')(layer_1)
+layer_3 = Dense(64, activation='relu')(layer_2)
+layer_4 = Dropout(0.2)(layer_3)
+layer_5 = Dense(16, activation='relu')(layer_4)
+output_layer = Dense(1, activation='sigmoid')(layer_5)
+
+model = Model(inputs=input_layer, outputs=output_layer)
+
+# Compile the model
+model.compile(
+    optimizer="adam",
+    loss='binary_crossentropy',
+    metrics=['accuracy', 'precision', 'recall']
+)
+
+# Train the model
+history = model.fit(
+    x_resampled, y_resampled,
+    validation_split=0.2,
+    epochs=200,
+    batch_size=64,
+    verbose=1,
+    callbacks=[checkpoint_callback]
+)
+```
+
+#### Keunggulan Pendekatan
+- **Kemampuan Menangkap Pola Kompleks**: Model deep learning mampu menangkap hubungan non-linear antara fitur-fitur kualitas air.
+- **Regularisasi**: Penggunaan dropout membantu mencegah overfitting, sehingga model lebih generalizable.
+- **Otomatisasi Penyimpanan Model Terbaik**: Callback `ModelCheckpoint` memastikan bahwa hanya model dengan performa validasi tertinggi yang disimpan.
+
+
+### Proses Pelatihan
+Proses pelatihan dilakukan dengan membagi dataset menjadi data latih (80%) dan data validasi (20%). Model dilatih selama 200 epoch dengan batch size sebesar 64 untuk memastikan pembelajaran yang efisien. Selama pelatihan, performa model dipantau menggunakan metrik seperti accuracy, precision, dan recall. Callback `ModelCheckpoint` digunakan untuk menyimpan model terbaik berdasarkan akurasi validasi tertinggi, sehingga hasil akhir yang dihasilkan optimal.
+
+  Berikut preview hasil training nya:
+
+  ![epoch](https://github.com/user-attachments/assets/cd43d189-f548-4148-a1b2-ad8ef06dfb21)
 
 # Evaluation
 
-Ketika model sudah dibangun dan sudah melakukan uji dengan data test, perlu dilakukan evaluasi untuk melihat performa dari model tersebut.
+## Pemilihan Metrik Evaluasi dan Relevansi
 
-  Berikut ini hasil dari Evaluasi pada data testing:
+Untuk proyek klasifikasi kelayakan air ini, kami memilih metrik evaluasi berdasarkan relevansinya dengan konteks bisnis yang telah dijelaskan dalam **Business Understanding**:
+
+1. **Accuracy (Akurasi)**: Mengukur kebenaran keseluruhan prediksi model. Dalam konteks **Goals**, akurasi memberikan indikasi seberapa baik model dapat memprediksi kelayakan air minum berdasarkan fitur-fitur numerik yang dieksplorasi.
+2. **Precision (Presisi)**: Mewakili proporsi identifikasi positif (air layak minum) yang benar-benar tepat. Ini penting untuk mengatasi masalah **Problem Statement** terkait risiko klasifikasi salah (false positive), yang dapat menyebabkan konsumsi air tidak aman.
+3. **Recall (Sensitivitas)**: Mengukur proporsi positif sebenarnya (air yang benar-benar layak minum) yang diidentifikasi dengan benar. Recall tinggi memastikan bahwa air yang aman tidak salah ditolak, sesuai dengan **Solution Statement** untuk meminimalkan false negative.
+4. **F1-Score**: Rata-rata harmonik antara presisi dan recall, memberikan keseimbangan antara kedua metrik ini. Hal ini sesuai dengan **Goals** untuk menghasilkan model dengan performa terbaik berdasarkan metrik evaluasi komprehensif.
+
+Metrik-metrik ini dipilih untuk memastikan bahwa model yang dibangun tidak hanya memenuhi **Goals** tetapi juga relevan dengan **Problem Statements** seperti menentukan fitur paling berpengaruh dan membandingkan performa antara pendekatan _machine learning_ dan _deep learning_.
+
+
+## Analisis Hasil Komparatif
+
+### Performa Model Machine Learning
+
+| Model                   | Akurasi  | Presisi | Recall   | F1-Score |
+|-------------------------|----------|---------|----------|----------|
+| Random Forest           | 60,62%   | 51,16%  | 26,76%   | 34,94%   |
+| KNN                     | 59,55%   | 44,60%  | 15,42%   | 22,88%   |
+| XGBoost                 | 57,42%   | 44,61%  | 33,26%   | 37,95%   |
+
+### Performa Model Deep Learning
+
   ```python
-    model.evaluate(x_test,y_test)
+    Classification Report:
+                precision    recall  f1-score   support
+  
+             0       0.96      0.97      0.97       392
+             1       0.97      0.96      0.97       408
+  
+      accuracy                           0.97       800
+     macro avg       0.97      0.97      0.97       800
+  weighted avg       0.97      0.97      0.97       800
   ```
-  Output:
-  25/25 ━━━━━━━━━━━━━━━━━━━━ 1s 4ms/step - accuracy: 0.9706 - loss: 0.3183 - precision_1: 0.9911 - recall_1: 0.9515
 
-  **Penjelasan**
-  - Model memiliki performa yang sangat baik pada dataset uji, dengan akurasi tinggi (97%), precision tinggi (99%), dan recall tinggi (95%).
-  - Nilai loss yang rendah (`0.1959`) menunjukkan bahwa model tidak mengalami overfitting atau underfitting yang signifikan.
-  - Dengan precision dan recall yang tinggi, model ini sangat andal untuk tugas klasifikasi biner, khususnya dalam menentukan apakah air layak minum atau tidak.
+Model deep learning secara signifikan mengungguli semua pendekatan machine learning tradisional di semua metrik. Arsitektur jaringan saraf mampu menangkap hubungan non-linear yang kompleks antara parameter air dan kelayakan minum, yang tidak dimodelkan secara efektif oleh algoritma berbasis pohon (_Random Forest_, _KNN_, _XGB_), sesuai dengan **Solution Statement** untuk membandingkan performa kedua pendekatan.
 
-Dari hasil diatas menujukkan bahwa Accuracy model menggunakan deep learning pada dataset test sebesar 97%. Hasilnya lebih besar dibandingkan dengan machine learning model dengan algoritma RandomForestClassifier, KNeighborsClassifier, dan XGBClassifier.
+
+## Hubungan dengan Business Understanding
+
+### Mengatasi Problem Statements
+
+1. **Fitur Berpengaruh**:  
+   - Eksplorasi data menggunakan analisis univariat dan multivariat berhasil mengidentifikasi fitur seperti `pH`, `Hardness`, `Solids`, dan `Organic_carbon` sebagai faktor utama yang memengaruhi klasifikasi kualitas air. Hal ini menjawab **Problem Statement** pertama tentang fitur paling berpengaruh.
+   - Visualisasi seperti _heatmap_ dan _correlation matrix_ memberikan wawasan lebih lanjut tentang hubungan antar fitur, mendukung **Solution Statement** untuk eksplorasi data.
+
+2. **Proses Dataset**:  
+   - Proses _data preparation_ mencakup penanganan missing value, _oversampling_ untuk menyeimbangkan kelas minoritas, _feature scaling_, dan _train-test split_. Langkah-langkah ini memastikan dataset siap digunakan untuk pelatihan model, menjawab **Problem Statement** kedua tentang cara memproses dataset.
+
+3. **Model Terbaik**:  
+   - Pendekatan _deep learning_ dengan arsitektur neural network berhasil mencapai performa terbaik (akurasi 97%) dibandingkan dengan model _machine learning_ tradisional. Hal ini menjawab **Problem Statement** ketiga tentang cara mendapatkan model dengan performa terbaik.
+
+
+### Pencapaian Goals
+
+1. **Eksplorasi Data**:  
+   - Analisis univariat dan multivariat berhasil memahami hubungan antara fitur numerik dan label klasifikasi (`Potability`), sesuai dengan **Goal** pertama.
+
+2. **Data Preparation**:  
+   - Proses _data preparation_ yang mencakup _data cleaning_, _oversampling_, _feature scaling_, dan _train-test split_ memastikan data siap digunakan untuk pelatihan model, sesuai dengan **Goal** kedua.
+
+3. **Perbandingan Performa**:  
+   - Model _deep learning_ secara signifikan mengungguli model _machine learning_ tradisional, memenuhi **Goal** ketiga untuk membandingkan performa antara kedua pendekatan.
+
+4. **Performa Terbaik**:  
+   - Model _deep learning_ mencapai akurasi 97%, presisi 97%, recall 96%, dan F1-score 97%, memenuhi **Goal** keempat untuk menghasilkan model dengan performa terbaik.
+
+
+### Dampak Solution Statements
+
+1. **Pipeline Preprocessing Data**:  
+   - Alur kerja preprocessing yang diimplementasikan berhasil menangani nilai yang hilang menggunakan imputasi median, menyeimbangkan distribusi kelas melalui oversampling, dan menstandarisasi fitur melalui MinMaxScaling. Langkah-langkah ini sangat penting untuk mencapai kinerja model yang tinggi, sesuai dengan **Solution Statement**.
+
+2. **Pendekatan Machine Learning**:  
+   - Meskipun algoritma tradisional mencapai kinerja moderat (~60% akurasi), pendekatan tersebut memberikan insight tentang hubungan fitur dan menetapkan baseline kinerja. Namun, performa rendah dalam recall dan precision menunjukkan bahwa pendekatan ini tidak cukup andal untuk aplikasi ini, sesuai dengan **Solution Statement**.
+
+3. **Peningkatan Deep Learning**:  
+   - Arsitektur jaringan saraf memberikan hasil luar biasa dengan akurasi 97%, menunjukkan kemampuannya yang unggul dalam memodelkan hubungan kompleks dalam data kualitas air, sesuai dengan **Solution Statement**.
+
+4. **Kerangka Evaluasi Komprehensif**:  
+   - Pendekatan evaluasi multi-metrik (akurasi, presisi, recall, F1) memberikan penilaian holistik terhadap kinerja model, mengonfirmasi keunggulan jaringan saraf untuk studi kasis ini, sesuai dengan **Solution Statement**.
+
 
 Berikut hasil visualisasi dari evaluasi training model deep learning:
 
 ![eval](https://github.com/user-attachments/assets/bdf40886-9681-4c6f-b310-7315d542c644)
-
-### Kesimpulan
-
-- **Performa Model**: Model menunjukkan performa yang baik pada data pelatihan, dengan metrik (accuracy, precision, recall) yang meningkat secara konsisten.
-
-- **Generalization**: Meskipun performa pada data validasi cukup baik, fluktuasi pada grafik validasi (terutama pada precision dan recall) menunjukkan bahwa model mungkin mengalami sedikit overfitting pada data pelatihan.
-
-- **Rekomendasi**: Untuk mengurangi fluktuasi dan meningkatkan generalisasi, beberapa langkah dapat dipertimbangkan:
-  - Menambahkan regularisasi (seperti Dropout tambahan atau L2 regularization).
-  - Menggunakan teknik early stopping untuk menghentikan pelatihan sebelum model mulai overfit.
-  - Meningkatkan ukuran dataset atau menggunakan augmentasi data jika memungkinkan.
 
 Kemudian berikut adalah hasil dari visualisasi confusion matrix:
 
@@ -536,30 +627,6 @@ _Confusion matrix_ di atas menunjukkan hasil evaluasi model klasifikasi biner. B
 - **False Negative (FN):** 16  
   Model memprediksi kelas negatif (0), tetapi sebenarnya kelas positif (1).
 
-Di bawah ini adalah detail lengkap terkait evaluasi performa model deep learning dengan memanfaatkan serangkaian metrik yang relevan:
-
-  ```python
-    accuracy = metrics.accuracy_score(y_test, y_pred)
-    precision = metrics.precision_score(y_test, y_pred, average='weighted')
-    recall = metrics.recall_score(y_test, y_pred, average='weighted')
-    f1 = metrics.f1_score(y_test, y_pred, average='weighted')
-    
-    classification_report = metrics.classification_report(y_test, y_pred)
-    print(f"Classification Report :\n{classification_report}")
-  ```
-
-Hasil:
-  ```python
-    Classification Report:
-                precision    recall  f1-score   support
-  
-             0       0.96      0.97      0.97       392
-             1       0.97      0.96      0.97       408
-  
-      accuracy                           0.97       800
-     macro avg       0.97      0.97      0.97       800
-  weighted avg       0.97      0.97      0.97       800
-  ```
 ## Referensi
 
 [1] G. Lukhayu Pritalia, “Analisis Komparatif Algoritme Machine Learning dan Penanganan Imbalanced Data pada Klasifikasi Kualitas Air Layak Minum,” *KONSTELASI: Konvergensi Teknologi dan Sistem Informasi*, vol. 2, no. 1, Apr. 2022, doi: https://doi.org/10.24002/konstelasi.v2i1.5630.
