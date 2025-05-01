@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-Proyek ini bertujuan untuk membangun **sistem rekomendasi film** yang cerdas dan relevan menggunakan dataset **MovieLens**. Dataset ini mencakup lebih dari 45.000 judul film yang dirilis hingga Juli 2017, dilengkapi dengan informasi metadata seperti nama pemeran, kru, kata kunci plot, anggaran produksi, serta pendapatan. Selain itu, terdapat lebih dari 26 juta data rating yang diberikan oleh 270.000 pengguna, masing-masing dalam skala 1 sampai 5.
+Proyek ini bertujuan untuk membangun **sistem rekomendasi film** yang cerdas dan relevan menggunakan dataset **MovieLens**. Dataset ini mencakup lebih dari 9,000 judul film yang dirilis hingga September 2018. Selain itu, terdapat lebih dari 100k data rating yang diberikan oleh 600 pengguna, masing-masing dalam skala 1 sampai 5.
 
 Dalam era digital saat ini, layanan *streaming* seperti Netflix atau Amazon Prime menyediakan ribuan pilihan film dan serial. Namun, banyaknya konten justru bisa membuat pengguna kesulitan memilih. Sistem rekomendasi hadir sebagai solusi untuk membantu pengguna menemukan film sesuai preferensi mereka, sehingga pengalaman menonton menjadi lebih personal dan menyenangkan. Di sisi lain, sistem ini juga memberikan nilai tambah bagi penyedia layanan dengan meningkatkan retensi dan kepuasan pengguna.
 
