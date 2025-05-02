@@ -519,7 +519,7 @@ Kode di atas menghasilkan tabel distribusi dan grafik sebagai berikut:
 Rating yang diberikan pengguna menjadi dasar utama dalam sistem rekomendasi berbasis kolaboratif. Dengan memahami distribusi rating, kita bisa mengetahui kecenderungan penilaian pengguna secara keseluruhan.
 
 ```python
-CountAndPlot(rating_df, 'rating')
+CountAndPlot(ratings_df, 'rating')
 ```
 
 Hasilnya adalah tabel dan grafik berikut:
