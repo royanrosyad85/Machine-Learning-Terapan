@@ -79,7 +79,7 @@ Untuk kebutuhan proyek ini, dua file utama yang akan digunakan adalah:
 - `movies.csv`: untuk membangun model *content-based filtering* berdasarkan metadata film (judul dan genre).
 - `ratings.csv`: untuk membangun model *collaborative filtering* berdasarkan riwayat rating pengguna.
 
-### 🔍 Struktur Variabel Dataset
+### Struktur Variabel Dataset
 
 #### File: `movies.csv`
 | Kolom     | Deskripsi |
@@ -96,7 +96,7 @@ Untuk kebutuhan proyek ini, dua file utama yang akan digunakan adalah:
 | `rating`    | Nilai rating yang diberikan pengguna (skala 0–5) |
 | `timestamp` | Waktu ketika rating dicatat (format UNIX timestamp) |
 
-### 📥 Proses Pengunduhan dan Pemuatan Dataset
+### Proses Pengunduhan dan Pemuatan Dataset
 
 Proses impor dataset dilakukan dengan langkah-langkah berikut:
 
@@ -472,7 +472,7 @@ Fungsi ini akan menampilkan:
 - Persentase relatifnya terhadap total data.
 - Grafik batang (*bar chart*) untuk memvisualisasikan distribusi tersebut.
 
-### 🎬 Distribusi Genre Film
+### Distribusi Genre Film
 
 Distribusi genre dilakukan untuk memahami seberapa banyak film tersedia di setiap kategori genre. Hal ini penting karena dapat memengaruhi hasil rekomendasi jika tidak diseimbangkan selama tahap *preprocessing*.
 
@@ -514,7 +514,7 @@ Kode di atas menghasilkan tabel distribusi dan grafik sebagai berikut:
 
 ---
 
-### ⭐ Distribusi Rating Pengguna
+### Distribusi Rating Pengguna
 
 Rating yang diberikan pengguna menjadi dasar utama dalam sistem rekomendasi berbasis kolaboratif. Dengan memahami distribusi rating, kita bisa mengetahui kecenderungan penilaian pengguna secara keseluruhan.
 
@@ -841,7 +841,7 @@ Hasil ini menunjukkan bahwa sistem berhasil menemukan film-film dengan genre dom
 
 ---
 
-### 🤝 *Collaborative Filtering Model*
+### *Collaborative Filtering Model*
 
 Teknik *collaborative filtering* bekerja dengan prinsip berbeda, yaitu memanfaatkan pola interaksi pengguna lain untuk memberikan rekomendasi. Teknik ini sangat efektif ketika pengguna memiliki preferensi yang mirip dengan kelompok pengguna lain.
 
@@ -1114,7 +1114,7 @@ Model berhasil memberikan lima rekomendasi film yang semuanya relevan dengan fil
 
 ---
 
-### ✅ Evaluasi Model *Collaborative Filtering* (Metrik: RMSE)
+### Evaluasi Model *Collaborative Filtering* (Metrik: RMSE)
 
 #### Apa itu Root Mean Squared Error (RMSE)?
 
@@ -1158,7 +1158,7 @@ Nilai RMSE yang relatif rendah menunjukkan bahwa model sudah cukup akurat dalam 
 
 ---
 
-### 🎯 Ringkasan Capaian terhadap Problem Statement
+### Ringkasan Capaian terhadap Problem Statement
 
 #### 🔹 *Problem Statement 1*: Bagaimana cara memahami dan memperoleh informasi mengenai data yang digunakan dalam pembuatan model sistem rekomendasi?
 - Proses eksplorasi data *(Exploratory Data Analysis / EDA)* telah dilakukan secara menyeluruh.
