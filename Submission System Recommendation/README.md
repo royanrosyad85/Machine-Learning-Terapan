@@ -921,35 +921,36 @@ history = model.fit(
 **Output Training:**
 ```
 Epoch 1/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 8s 2ms/step - loss: 0.6744 - root_mean_squared_error: 0.2506 - val_loss: 0.6437 - val_root_mean_squared_error: 0.2180
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 9s 2ms/step - loss: 0.6748 - root_mean_squared_error: 0.2510 - val_loss: 0.6445 - val_root_mean_squared_error: 0.2188
 Epoch 2/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6365 - root_mean_squared_error: 0.2070 - val_loss: 0.6366 - val_root_mean_squared_error: 0.2098
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6357 - root_mean_squared_error: 0.2094 - val_loss: 0.6366 - val_root_mean_squared_error: 0.2099
 Epoch 3/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6209 - root_mean_squared_error: 0.1942 - val_loss: 0.6308 - val_root_mean_squared_error: 0.2032
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6219 - root_mean_squared_error: 0.1933 - val_loss: 0.6308 - val_root_mean_squared_error: 0.2035
 Epoch 4/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6146 - root_mean_squared_error: 0.1847 - val_loss: 0.6263 - val_root_mean_squared_error: 0.1981
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6130 - root_mean_squared_error: 0.1846 - val_loss: 0.6279 - val_root_mean_squared_error: 0.2000
 Epoch 5/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6090 - root_mean_squared_error: 0.1749 - val_loss: 0.6245 - val_root_mean_squared_error: 0.1961
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6083 - root_mean_squared_error: 0.1753 - val_loss: 0.6237 - val_root_mean_squared_error: 0.1952
 Epoch 6/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6029 - root_mean_squared_error: 0.1682 - val_loss: 0.6217 - val_root_mean_squared_error: 0.1929
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.6008 - root_mean_squared_error: 0.1687 - val_loss: 0.6213 - val_root_mean_squared_error: 0.1925
 Epoch 7/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5990 - root_mean_squared_error: 0.1614 - val_loss: 0.6188 - val_root_mean_squared_error: 0.1896
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5995 - root_mean_squared_error: 0.1608 - val_loss: 0.6187 - val_root_mean_squared_error: 0.1894
 Epoch 8/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5954 - root_mean_squared_error: 0.1574 - val_loss: 0.6173 - val_root_mean_squared_error: 0.1879
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5940 - root_mean_squared_error: 0.1580 - val_loss: 0.6166 - val_root_mean_squared_error: 0.1871
 Epoch 9/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5919 - root_mean_squared_error: 0.1528 - val_loss: 0.6154 - val_root_mean_squared_error: 0.1857
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5901 - root_mean_squared_error: 0.1526 - val_loss: 0.6151 - val_root_mean_squared_error: 0.1853
 Epoch 10/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5879 - root_mean_squared_error: 0.1458 - val_loss: 0.6139 - val_root_mean_squared_error: 0.1841
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5864 - root_mean_squared_error: 0.1458 - val_loss: 0.6134 - val_root_mean_squared_error: 0.1835
 Epoch 11/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5846 - root_mean_squared_error: 0.1438 - val_loss: 0.6122 - val_root_mean_squared_error: 0.1822
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5837 - root_mean_squared_error: 0.1432 - val_loss: 0.6125 - val_root_mean_squared_error: 0.1824
 Epoch 12/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5833 - root_mean_squared_error: 0.1377 - val_loss: 0.6112 - val_root_mean_squared_error: 0.1812
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5819 - root_mean_squared_error: 0.1407 - val_loss: 0.6104 - val_root_mean_squared_error: 0.1801
 Epoch 13/30
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5787 - root_mean_squared_error: 0.1366 - val_loss: 0.6102 - val_root_mean_squared_error: 0.1799
 ...
 Epoch 29/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 2ms/step - loss: 0.5625 - root_mean_squared_error: 0.1111 - val_loss: 0.6052 - val_root_mean_squared_error: 0.1751
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5614 - root_mean_squared_error: 0.1101 - val_loss: 0.6048 - val_root_mean_squared_error: 0.1746
 Epoch 30/30
-2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5592 - root_mean_squared_error: 0.1089 - val_loss: 0.6054 - val_root_mean_squared_error: 0.1752
+2918/2918 ━━━━━━━━━━━━━━━━━━━━ 4s 1ms/step - loss: 0.5613 - root_mean_squared_error: 0.1092 - val_loss: 0.6048 - val_root_mean_squared_error: 0.1746
 ```
 
 #### Prediksi Rekomendasi
@@ -967,29 +968,29 @@ for row in recommended_movie.itertuples():
 **Contoh Output Rekomendasi:**
 
 ```
-293/293 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step
-Showing recommendations for users: 89
+290/290 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step
+Showing recommendations for users: 610
 ===========================
 Movie with high ratings from user
 --------------------------------
-Valet, The (La doublure) (2006)
-Boy Eats Girl (2005)
-Get Low (2009)
-Stuart Little 3: Call of the Wild (2005)
-Hollywood Chainsaw Hookers (1988)
+Opera (1987)
+Dead or Alive: Hanzaisha (1999)
+Project A 2 ('A' gai wak juk jap) (1987)
+Enter the Void (2009)
+Maniac Cop 2 (1990)
 --------------------------------
 Top 10 movie recommendation
 --------------------------------
-Nobody Knows (Dare mo shiranai) (2004)
-Idlewild (2006)
-Hunger (2008)
-Pervert's Guide to Cinema, The (2006)
-TiMER (2009)
-Enter the Void (2009)
-Endgame (2009)
-Dance of Reality, The (Danza de la realidad, La) (2013)
-Sex, Drugs & Taxation (2013)
-The Girl on the Train (2016)
+Vagabond (Sans toit ni loi) (1985)
+The Big Bus (1976)
+Battle Royale 2: Requiem (Batoru rowaiaru II: Chinkonka) (2003)
+Watching the Detectives (2007)
+PK (2014)
+The Fox and the Hound 2 (2006)
+Sherlock Holmes and Dr. Watson: Acquaintance (1979)
+Tenchi Muyô! In Love (1996)
+Loving Vincent (2017)
+Blue Planet II (2017)
 ```
 
 Dengan pendekatan ini, sistem mampu memberikan rekomendasi yang beragam, bahkan di luar genre utama yang biasa ditonton oleh pengguna, berdasarkan pola interaksi dari pengguna lain yang memiliki preferensi serupa.
@@ -1140,17 +1141,18 @@ plt.legend(['train', 'val'])
 plt.show()
 ```
 
-![image](https://github.com/user-attachments/assets/d2381637-5ca2-49f9-9885-d3b7a6daa741)
+![image](https://github.com/user-attachments/assets/13be0765-02bb-4343-8be4-21a9b30f7f1f)
+
 
 
 Dari grafik di atas dapat dilihat bahwa nilai RMSE terus menurun selama pelatihan, baik pada data pelatihan maupun validasi. Pada akhir pelatihan, hasil evaluasi menunjukkan:
 
 | Metrik                          | Nilai       |
 |---------------------------------|-------------|
-| Training Loss                   | 0.5592      |
-| Validation Loss                 | 0.6054      |
-| Training RMSE                   | 0.1089      |
-| Validation RMSE                 | 0.1752      |
+| Training Loss                   | 0.5613      |
+| Validation Loss                 | 0.6048      |
+| Training RMSE                   | 0.1092      |
+| Validation RMSE                 | 0.1746      |
 
 Nilai RMSE yang relatif rendah menunjukkan bahwa model sudah cukup akurat dalam memprediksi rating pengguna terhadap film-film tertentu.
 
@@ -1191,10 +1193,17 @@ Hasil evaluasi membuktikan bahwa kedua model mampu memberikan rekomendasi yang a
 
 ## 📚 Referensi
 
-- Koren et al. (2009). [Matrix Factorization Techniques for Recommender Systems](https://datajobs.com/data-science-repo/Recommender-Systems-%5BNetflix%5D.pdf)
-- Sarwar, B. et al. (2001). [Item-Based Collaborative Filtering Recommendation Algorithms](https://www.researchgate.net/publication/2369002_Item-based_Collaborative_Filtering_Recommendation_Algorithms)
-- Hu, Y. et al. (2008). [Collaborative Filtering for Implicit Feedback Datasets](https://ieeexplore.ieee.org/document/4781121)
-- Sekartaji (2023). *Studi Perilaku Konsumen Digital*
-- Muhd Shukri et al. (2024). *Tren Platform Streaming di Era Digital*
-- Muvi.com. *Streaming Industry Insights*
+Daftar pustaka yang digunakan dalam pengembangan sistem rekomendasi film ini mencakup jurnal ilmiah dan sumber teoretis terkait penerapan teknik *content-based filtering* dan *collaborative filtering*. Berikut adalah daftar referensi lengkap:
+
+1. **Xu, G., Jia, G., Shi, L., & Zhang, Z. (2021).** *Personalized Course Recommendation System Fusing with Knowledge Graph and Collaborative Filtering.* *Computational Intelligence and Neuroscience, 2021*, 9590502.  https://doi.org/10.1155/2021/9590502
+
+2. **Lin, K., Yang, S., & Na, S. (2022).** *Collaborative Filtering Algorithm-Based Destination Recommendation and Marketing Model for Tourism Scenic Spots.* *Computational Intelligence and Neuroscience, 2022*, 1–7.  https://doi.org/10.1155/2022/7115627
+
+3. **Wang, L. (2022).** *Collaborative Filtering Recommendation of Music MOOC Resources Based on Spark Architecture.* *Computational Intelligence and Neuroscience, 2022*, 1–8. https://doi.org/10.1155/2022/2117081
+
+4. **Liu, M., Wang, M., Li, B., & Zhong, Q. (2025).** *Collaborative Filtering Based on GNN with Attribute Fusion and Broad Attention.* *PeerJ Computer Science.* https://doi.org/10.7717/peerj-cs.2706
+
+5. **Ayyaz, S., Qamar, U., & Nawaz, R. (2018).** *HCF-CRS: A Hybrid Content Based Fuzzy Conformal Recommender System for Providing Recommendations with Confidence.* *PLOS ONE, 13*(10), e0204849.  https://doi.org/10.1371/journal.pone.0204849
+
+6. **Du, Y., Peng, L., Dou, S., Su, X., & Ren, X. (2022).** *Research on Personalized Book Recommendation Based on Improved Similarity Calculation and Data Filling Collaborative Filtering Algorithm.* *Computational Intelligence and Neuroscience, 2022*, 1–11. https://doi.org/10.1155/2022/1900209
 
