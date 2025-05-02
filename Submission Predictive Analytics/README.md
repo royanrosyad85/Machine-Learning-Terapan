@@ -417,13 +417,14 @@ Meskipun recall lebih tinggi (33,26%) dibandingkan Random Forest dan KNN, akuras
 
 
   Berikut hasil dari Grid Search untuk Hyperparameter Tuning:
-      Model               | Best Params                                                     | Best Accuracy
-  ------------------------|-----------------------------------------------------------------|--------------
-  RandomForestClassifier  | {'n_estimators': 150}                                           | 0.729229
-  KNeighborsClassifier    | {'metric': 'euclidean', 'n_neighbors': 30, 'weights': 'uniform'}| 0.696446
-  XGBClassifier           | {'learning_rate': 0.5, 'n_estimators': 300}                     | 0.714214
+  
+  | Model                  | Best Params                                                     | Best Accuracy |
+  |------------------------|-----------------------------------------------------------------|---------------|
+  | RandomForestClassifier | {'n_estimators': 150}                                           | 0.729229      |
+  | KNeighborsClassifier   | {'metric': 'euclidean', 'n_neighbors': 30, 'weights': 'uniform'}| 0.696446      |
+  | XGBClassifier          | {'learning_rate': 0.5, 'n_estimators': 300}                     | 0.714214      |
 
-    Belum cukup puas dengan hasilnya, saya bereksperimen menggunakan deep learning untuk meningkatkan accuracy training
+Belum cukup puas dengan hasilnya, saya bereksperimen menggunakan deep learning untuk meningkatkan accuracy training.
 
 
 ## Pendekatan Deep Learning
