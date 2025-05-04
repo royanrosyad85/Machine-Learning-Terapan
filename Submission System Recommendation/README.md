@@ -1205,7 +1205,7 @@ Irrelevant Movies: None
 
 #### Interpretasi Hasil
 
-Model berhasil memberikan lima rekomendasi film yang semuanya relevan dengan film input (*genre*: Drama). Nilai *precision* yang dicapai adalah **1.0**, artinya semua rekomendasi tepat sasaran dan tidak ada film yang tidak relevan direkomendasikan.
+Model berhasil memberikan lima rekomendasi film yang semuanya relevan dengan film input (*genre*: Scifi). Nilai *precision* yang dicapai adalah **1.0**, artinya semua rekomendasi tepat sasaran dan tidak ada film yang tidak relevan direkomendasikan.
 
 ---
 
