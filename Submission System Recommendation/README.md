@@ -546,6 +546,7 @@ Hasilnya adalah tabel dan grafik berikut:
 - Distribusi ini membantu dalam mengevaluasi apakah sistem perlu lebih sensitif terhadap rating rendah atau fokus pada preferensi mayoritas.
 
 ## 🧹 Data Preparation
+Data preparation merupakan tahap krusial dalam proses pengembangan sistem rekomendasi. Tujuan utamanya adalah memastikan bahwa data yang akan digunakan untuk pelatihan model bersih, relevan, dan dalam format yang sesuai sehingga dapat diproses secara efektif oleh algoritma machine learning.
 
 ### *Data Cleaning*
 
@@ -587,12 +588,52 @@ clean_ratings_df = clean_ratings_df.drop(columns=['timestamp'])
 
 #### Handling Imbalanced Data
 
-Setelah data dibersihkan, selanjutnya dilakukan penanganan terhadap ketidakseimbangan jumlah data tiap genre. Genre seperti Drama dan Comedy memiliki jumlah jauh lebih banyak dibandingkan genre minoritas seperti War atau Film-Noir.
+Setelah data melalui tahap *cleaning*, langkah selanjutnya adalah menangani ketidakseimbangan jumlah film di setiap genre. Beberapa genre seperti Drama dan Comedy memiliki jumlah jauh lebih banyak dibandingkan genre minoritas seperti War atau Film-Noir, yang dapat menyebabkan model cenderung bias terhadap genre dominan.
 
-Untuk mengatasi hal ini, dilakukan *undersampling* pada jumlah rating per film:
+Sebagai langkah awal dalam proses ini, genre `'War'` dihapus dari dataset karena jumlahnya sangat sedikit dan tidak signifikan dibandingkan genre lain.
 
-- Setiap film dibatasi maksimal 3 rating dari pengguna.
-- Jika suatu film memiliki kurang dari 3 rating, dilakukan *resample* (pengambilan acak dengan penggantian) hingga mencapai jumlah yang ditentukan.
+```python
+clean_movies_df = clean_movies_df[clean_movies_df['genres'] != 'War']
+print('Jumlah Genre War:', len(clean_movies_df[clean_movies_df['genres'] == 'War']))
+print()
+print(clean_movies_df['genres'].value_counts())
+```
+
+**Output:**
+```
+Jumlah Genre War: 0
+
+genres
+Comedy         2779
+Drama          2226
+Action         1828
+Adventure       653
+Crime           537
+Horror          468
+Documentary     386
+Animation       298
+Children        197
+Thriller         84
+Sci-Fi           62
+Mystery          48
+Fantasy          42
+Romance          38
+Western          23
+Musical          23
+Film-Noir        12
+Name: count, dtype: int64
+```
+
+**Penjelasan:**  
+Genre `'War'` dihapus untuk menghindari overfitting atau noise pada model akibat jumlah sampel yang sangat sedikit. Setelah itu, dilakukan *undersampling* pada jumlah rating per film agar distribusi antar film lebih seimbang.
+
+**Alasan:**  
+Genre dengan jumlah sangat kecil dapat memperberat proses pelatihan model tanpa memberikan kontribusi signifikan terhadap kualitas rekomendasi secara keseluruhan. Dengan menghilangkan genre-genre minoritas dan membatasi jumlah rating per film, kita bisa mengurangi bias dan meningkatkan efisiensi serta akurasi model.
+
+**Proses undersampling:**
+
+- Setiap film dibatasi maksimal hanya memiliki 3 rating.
+- Jika suatu film memiliki kurang dari 3 rating, maka dilakukan *resample* (pengambilan acak dengan penggantian) hingga mencapai jumlah target.
 
 ```python
 target_ratings = 3
@@ -604,8 +645,25 @@ clean_ratings_df = pd.concat(
     ]
 )
 ```
+**Output:**
 
-Proses ini membantu meningkatkan keseimbangan distribusi data dan mencegah bias terhadap film-film populer atau genre dominan.
+|         | userId  |movieId |rating | 
+|---------|---------|--------|-------|
+| 90256   | 587     | 1      | 5.0   |
+| 98666   | 608     | 1      | 2.5   |
+| 58965   | 385     | 1      | 4.0   |
+| 75200   | 475     | 2      | 4.5   |
+| 12731   | 82      | 2      | 3.0   |
+| ...     | ...     | ...    | ...   |
+| 27259   | 184     | 193587 | 3.5   |
+| 27259   | 184     | 193587 | 3.5   |
+| 51362   | 331     | 193609 | 4.0   |
+| 51362   | 331     | 193609 | 4.0   |
+| 51362   | 331     | 193609 | 4.0   |
+
+
+Langkah ini membantu menjaga keseimbangan data sehingga model tidak hanya cenderung merekomendasikan film dari genre mayoritas, tetapi juga mampu memberikan saran yang bervariasi dan relevan.
+
 
 #### Text Processing
 
@@ -734,22 +792,22 @@ clean_ratings_df
 ```
 output:
 
-```markdown
-| userId | movieId | rating | user  | movie |
-|--------|---------|--------|-------|-------|
-| 90256  | 587     | 1      | 5.0   | 0     |
-| 98666  | 608     | 1      | 2.5   | 0     |
-| 58965  | 385     | 1      | 4.0   | 0     |
-| 75200  | 475     | 2      | 4.5   | 1     |
-| 12731  | 82      | 2      | 3.0   | 1     |
-| ...    | ...     | ...    | ...   | ...   |
-| 27259  | 184     | 193587 | 3.5   | 9722  |
-| 27259  | 184     | 193587 | 3.5   | 9722  |
-| 51362  | 331     | 193609 | 4.0   | 9723  |
-| 51362  | 331     | 193609 | 4.0   | 9723  |
-| 51362  | 331     | 193609 | 4.0   | 9723  |
+|        | userid  | movieid|rating| user  | movie |
+|--------|---------|--------|------|-------|-------|
+| 90256  | 587     | 1      | 5.0  | 0     | 0     |
+| 98666  | 608     | 1      | 2.5  | 1     | 0     |
+| 58965  | 385     | 1      | 4.0  | 2     | 0     |
+| 75200  | 475     | 2      | 4.5  | 3     | 1     |
+| 12731  | 82      | 2      | 3.0  | 4     | 1     |
+| ...    | ...     | ...    | ...  | ...   | ...   |
+| 27259  | 184     | 193587 | 3.5  | 524   | 9722  |
+| 27259  | 184     | 193587 | 3.5  | 524   | 9722  |
+| 51362  | 331     | 193609 | 4.0  | 97    | 9723  |
+| 51362  | 331     | 193609 | 4.0  | 97    | 9723  |
+| 51362  | 331     | 193609 | 4.0  | 97    | 9723  |
+
 29172 rows × 5 columns
-```
+
 
 Proses encoding ini sangat penting dalam pengembangan model *collaborative filtering*, terutama untuk pendekatan berbasis *matrix factorization*.
 
@@ -898,7 +956,7 @@ class RecommenderSystem(tf.keras.Model):
 
 #### Pelatihan Model
 
-Model dilatih selama 3 *epoch* menggunakan optimizer Adam dan fungsi loss Binary Crossentropy, dengan metrik evaluasi RMSE (*Root Mean Squared Error*):
+Model dilatih selama 30 *epoch* menggunakan optimizer Adam dan fungsi loss Binary Crossentropy, dengan metrik evaluasi RMSE (*Root Mean Squared Error*):
 
 ```python
 model = RecommenderSystem(user_number, movie_number, 50)
@@ -958,14 +1016,51 @@ Epoch 30/30
 Setelah model dilatih, sistem dapat memberikan rekomendasi film berdasarkan riwayat rating pengguna. Berikut contoh output rekomendasi untuk salah satu pengguna:
 
 ```python
-user_id = clean_ratings_df.userId.sample(1).iloc[0]
-# ... kode prediksi ...
-recommended_movie = movies_df[movies_df['movieId'].isin(recommended_movie_ids)]
-for row in recommended_movie.itertuples():
-    print(row.title)
+if user_movie_array.size > 0:
+    ratings = model.predict(user_movie_array).flatten()
+
+    top_ratings_indices = ratings.argsort()[-10:][::-1]
+    recommended_movie_ids = [
+        decode_movie.get(movie_not_watched[x][0]) for x in top_ratings_indices if decode_movie.get(movie_not_watched[x][0]) is not None
+    ] # Ensure decoding exists
+
+    print('Showing recommendations for users: {}'.format(user_id))
+    print('===' * 9)
+    print('Movie with high ratings from user')
+    print('----' * 8)
+
+    top_movie_user = (
+        movie_watched_by_user.sort_values(
+            by = 'rating',
+            ascending=False
+        )
+        .head(5)
+        .movieId.values
+    )
+
+    movie_df_rows = movies_df[movies_df['movieId'].isin(top_movie_user)]
+    if not movie_df_rows.empty:
+        for row in movie_df_rows.itertuples():
+            print(row.title)
+    else:
+        print("No highly rated movies found for this user in the original movies_df.")
+
+
+    print('----' * 8)
+    print('Top 10 movie recommendation')
+    print('----' * 8)
+
+    recommended_movie = movies_df[movies_df['movieId'].isin(recommended_movie_ids)]
+    if not recommended_movie.empty:
+        for row in recommended_movie.itertuples():
+            print(row.title)
+    else:
+        print("No recommendations found based on predicted ratings.")
+else:
+    print(f"Cannot generate recommendations for user {user_id} as no unwatched movies were found or user/movie encoding failed.")
 ```
 
-**Contoh Output Rekomendasi:**
+**Berikut hasil nya:**
 
 ```
 290/290 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step
