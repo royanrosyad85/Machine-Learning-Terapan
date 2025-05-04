@@ -837,7 +837,7 @@ Hasil yang didapat adalah lima film dengan genre dan karakteristik serupa:
 | 3     | Beginning of the End (1957)                 | Scifi  |
 | 4     | Contagion (2011)       		                  | Scifi  |
 
-Hasil ini menunjukkan bahwa sistem berhasil menemukan film-film dengan genre dominan Drama, sesuai dengan film yang menjadi input awal.
+Hasil ini menunjukkan bahwa sistem berhasil menemukan film-film dengan genre dominan Scifi, sesuai dengan film yang menjadi input awal.
 
 ---
 
