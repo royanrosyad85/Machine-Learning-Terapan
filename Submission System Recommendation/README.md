@@ -104,7 +104,7 @@ Proses impor dataset dilakukan dengan langkah-langkah berikut:
 2. **Mengekstrak file ZIP** agar file CSV dapat diakses.
 3. **Memuat file CSV** (`movies.csv` dan `ratings.csv`) menggunakan library `pandas`.
 
-Contoh kode Python untuk proses impor dataset:
+Berikut code Python untuk proses impor dataset:
 
 ```python
 import os
