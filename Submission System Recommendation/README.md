@@ -1111,9 +1111,11 @@ $$
 - **True Positives (TP)**: Jumlah film yang direkomendasikan dan memiliki genre yang sama atau mirip dengan film input.
 - **False Positives (FP)**: Jumlah film yang direkomendasikan tetapi tidak relevan dengan genre film input.
 
-#### Cara Kerja Evaluasi
+#### Cara Kerja 
 
-Untuk mengevaluasi model *content-based*, dibuat fungsi yang memeriksa apakah film hasil rekomendasi memiliki genre yang serupa dengan film input. Hasil dievaluasi sebagai relevan atau tidak berdasarkan kesamaan genre.
+Precision mengukur seberapa banyak rekomendasi film yang benar-benar relevan dari total rekomendasi yang diberikan. Cara kerjanya adalah dengan membandingkan jumlah *True Positives* (film yang direkomendasikan dan cocok dengan preferensi pengguna) terhadap total prediksi positif, yaitu *True Positives + False Positives*. 
+
+Semakin tinggi nilai *precision*, semakin sedikit film tidak relevan yang direkomendasikan oleh sistem, sehingga cocok digunakan ketika kualitas rekomendasi harus sangat akurat.
 
 ```python
 def evaluate_content_based_filtering(movie_title, similarity_data=cosine_df, items=movies_df[['title', 'genres']], k=5):
@@ -1222,9 +1224,11 @@ RMSE adalah metrik evaluasi yang digunakan untuk mengukur rata-rata kesalahan an
 
 RMSE memberikan informasi tentang sejauh mana prediksi sistem menyimpang dari nilai aktual. Semakin kecil nilai RMSE, semakin akurat prediksi sistem.
 
-#### Cara Kerja Evaluasi
+#### Cara Kerja
 
-Model *collaborative filtering* dilatih selama 30 *epoch*. Setiap *epoch* mencatat metrik RMSE pada data pelatihan dan validasi. Berikut adalah visualisasi perkembangan RMSE selama proses pelatihan:
+RMSE (*Root Mean Squared Error*) digunakan untuk mengevaluasi seberapa akurat model *collaborative filtering* dalam memprediksi rating yang diberikan oleh pengguna. Cara kerja metrik ini dimulai dengan menghitung selisih antara rating aktual dan rating hasil prediksi. Selisih tersebut kemudian dikuadratkan untuk menghilangkan nilai negatif sekaligus memberikan bobot lebih besar pada kesalahan yang lebih besar. Setelah itu, hasil kuadrat dari seluruh data dihitung rata-ratanya, dan akhirnya diambil akar kuadrat dari nilai rata-rata tersebut untuk menghasilkan nilai RMSE. Semakin rendah nilai RMSE, semakin dekat prediksi model dengan nilai sebenarnya, sehingga metrik ini sangat cocok digunakan ketika tujuan utama adalah meminimalkan kesalahan prediksi numerik.
+
+Berikut adalah visualisasi perkembangan RMSE selama proses pelatihan:
 
 ```python
 plt.plot(history.history['root_mean_squared_error'])
