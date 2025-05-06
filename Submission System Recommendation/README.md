@@ -813,7 +813,10 @@ Proses encoding ini sangat penting dalam pengembangan model *collaborative filte
 
 #### Train-Test Split
 
-Akhir dari tahap *data preparation* adalah pembagian dataset menjadi dua bagian: data latih dan data uji. Pembagian dilakukan dengan rasio 80:20.
+Sebelumnya dilakukan terlebih dahulu pemisahan fitur dan label. Fitur yang digunakan adalah pasangan *user* dan *movie*, yang diambil dalam bentuk array dua dimensi: `x = clean_ratings_df[['user', 'movie']].values`. Sementara itu, nilai rating yang diberikan pengguna terhadap film digunakan sebagai label.
+
+Pada proses ini, rating yang semula berada dalam rentang 0.5 hingga 5.0 perlu dinormalisasi ke skala 0 hingga 1. Hal ini dilakukan agar model neural network lebih mudah belajar dan hasil prediksi menjadi lebih stabil.
+Normalisasi dilakukan menggunakan code `y = clean_ratings_df['rating'].apply(lambda x: (x - min_rating) / (max_rating - min_rating)).values`
 
 ```python
 clean_ratings_df = clean_ratings_df.sample(frac=1, random_state=42)
@@ -846,7 +849,7 @@ output:
  [ 114 7884]] [0.33333333 0.55555556 0.11111111 ... 0.33333333 0.66666667 0.55555556]
 ```
 
-Dengan membagi data menjadi set latih dan set uji, kita dapat mengukur akurasi model dalam menghadapi contoh yang belum pernah dilihat sebelumnya, sehingga performa sebenarnya dari model dapat dievaluasi.
+Setelah dinormalisasi, data kemudian dibagi menjadi dua bagian: data training dan data validasi, dengan rasio 80:20. Data latih digunakan untuk melatih model, sedangkan data validasi digunakan untuk menguji performa model pada data yang belum pernah dilihat sebelumnya.
 
 ## 🧠 Modeling
 
@@ -866,7 +869,7 @@ Teknik *content-based filtering* digunakan untuk merekomendasikan film berdasark
 
 #### Penerapan Model
 
-Untuk membuat rekomendasi berbasis konten, kita menggunakan matriks *cosine similarity* yang dihitung dari representasi TF-IDF dari genre film. Fungsi berikut digunakan untuk mendapatkan daftar film yang paling mirip dengan judul tertentu:
+Untuk membuat rekomendasi berbasis konten, kita menggunakan matriks *cosine similarity* yang dihitung dari representasi TF-IDF dari genre film. Fungsi berikut digunakan untuk mendapatkan daftar film yang paling mirip dengan judul tertentu
 
 ```python
 def movie_recommendations(movie_title, similarity_data = cosine_df, items=movies_df[['title', 'genres']], k=5):
@@ -878,6 +881,35 @@ def movie_recommendations(movie_title, similarity_data = cosine_df, items=movies
 
     return pd.DataFrame(closest).merge(items).head(k)
 ```
+##### Cara Kerja Cosine Similarity
+
+Cosine similarity adalah metode yang digunakan untuk mengukur tingkat kemiripan antara dua buah vektor, dalam konteks ini adalah representasi tiap film berdasarkan fitur genre yang telah diubah menjadi vektor menggunakan TF-IDF. Matriks hasil perhitungan cosine similarity ini berisi nilai antara 0 hingga 1 untuk setiap pasangan film, di mana nilai 0 menunjukkan bahwa kedua film sama sekali tidak mirip, sedangkan nilai 1 menunjukkan bahwa kedua film sangat mirip atau identik dari segi fitur yang dianalisis.
+
+- **Rumus Cosine Similarity:**
+Secara matematis, cosine similarity antara dua vektor \( A \) dan \( B \) dapat dihitung dengan:
+
+$$
+\text{cosine similarity}(A, B) = \frac{A \cdot B}{\|A\| \|B\|}
+$$
+
+  - \( A dot B \) adalah **dot product** dari vektor \( A \) dan \( B \).
+  - \( \|A\| \) serta \( \|B\| \) adalah norma atau panjang masing-masing vektor, yang diperoleh dengan rumus:
+
+$$
+\|A\| = \sqrt{\sum_{i=1}^{n} A_i^2} \quad \text{dan} \quad \|B\| = \sqrt{\sum_{i=1}^{n} B_i^2}
+$$
+
+Sehingga, jika dituliskan secara lengkap:
+
+$$
+\text{cosine similarity}(A, B) = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \times \sqrt{\sum_{i=1}^{n} B_i^2}}
+$$
+
+- **Keunggulan Cosine Similarity:**
+  - **Mampu menangani data skala besar:** Karena hanya mempertimbangkan sudut antar vektor dan bukan besarannya, cosine similarity sangat sesuai untuk membandingkan dokumen atau data berdimensi banyak seperti genre film yang telah diolah menjadi vektor.
+  - **Efisien secara komputasi:** Proses perhitungannya hanya membutuhkan operasi dot product dan norma, sehingga dapat dieksekusi dengan cepat bahkan pada dataset berukuran besar.
+
+Dengan menggunakan cosine similarity, sistem dapat dengan mudah mengidentifikasi dan merekomendasikan film-film yang secara karakteristik paling mendekati film yang diminati pengguna, atau yang paling relevan dengan preferensi pengguna berdasarkan kesamaan fitur.
 
 Sebagai contoh, ketika film `'Interstellar (2014)'` dimasukkan sebagai input:
 
@@ -887,13 +919,8 @@ movie_recommendations('Interstellar (2014)')
 
 Hasil yang didapat adalah lima film dengan genre dan karakteristik serupa:
 
-| Index | Title                                       | Genre  |
-|-------|---------------------------------------------|--------|
-| 0     | Timecrimes (Cronocrímenes, Los) (2007)      | Scifi  |
-| 1     | Meteor (1979)                               | Scifi  |
-| 2     | Sphere (1998)                               | Scifi  |
-| 3     | Beginning of the End (1957)                 | Scifi  |
-| 4     | Contagion (2011)       		                  | Scifi  |
+![image](https://github.com/user-attachments/assets/278a2016-1704-4e1c-bf47-fb647890f8bd)
+
 
 Hasil ini menunjukkan bahwa sistem berhasil menemukan film-film dengan genre dominan Scifi, sesuai dengan film yang menjadi input awal.
 
@@ -1062,31 +1089,8 @@ else:
 
 **Berikut hasil nya:**
 
-```
-290/290 ━━━━━━━━━━━━━━━━━━━━ 1s 2ms/step
-Showing recommendations for users: 610
-===========================
-Movie with high ratings from user
---------------------------------
-Opera (1987)
-Dead or Alive: Hanzaisha (1999)
-Project A 2 ('A' gai wak juk jap) (1987)
-Enter the Void (2009)
-Maniac Cop 2 (1990)
---------------------------------
-Top 10 movie recommendation
---------------------------------
-Vagabond (Sans toit ni loi) (1985)
-The Big Bus (1976)
-Battle Royale 2: Requiem (Batoru rowaiaru II: Chinkonka) (2003)
-Watching the Detectives (2007)
-PK (2014)
-The Fox and the Hound 2 (2006)
-Sherlock Holmes and Dr. Watson: Acquaintance (1979)
-Tenchi Muyô! In Love (1996)
-Loving Vincent (2017)
-Blue Planet II (2017)
-```
+![image](https://github.com/user-attachments/assets/d0b6b862-4d42-4491-8d1f-e439bb1a678a)
+
 
 Dengan pendekatan ini, sistem mampu memberikan rekomendasi yang beragam, bahkan di luar genre utama yang biasa ditonton oleh pengguna, berdasarkan pola interaksi dari pengguna lain yang memiliki preferensi serupa.
 
@@ -1195,15 +1199,7 @@ else:
 
 #### Output Evaluasi
 
-```
-Evaluation Summary for 'Interstellar (2014)':
-Total Recommendations: 5
-Relevant Recommendations: 5
-Irrelevant Recommendations: 0
-Precision: 1.0000
-Relevant Movies: Timecrimes (Cronocrímenes, Los) (2007), Meteor (1979), Sphere (1998), Beginning of the End (1957), Contagion (2011)
-Irrelevant Movies: None
-```
+![image](https://github.com/user-attachments/assets/6f5be05d-3a60-4add-a2e7-9a1570b62966)
 
 #### Interpretasi Hasil
 
@@ -1288,7 +1284,11 @@ Proyek ini bertujuan untuk mengembangkan sistem rekomendasi film berbasis *machi
 - **Content-Based Filtering**: Menghasilkan rekomendasi film berdasarkan kesamaan genre, dengan nilai *precision* sempurna yaitu 1.0.
 - **Collaborative Filtering**: Memberikan prediksi rating pengguna terhadap film yang belum ditonton, dengan RMSE akhir sebesar 0.1752 pada data validasi.
 
-Hasil evaluasi membuktikan bahwa kedua model mampu memberikan rekomendasi yang akurat dan relevan. Sistem ini dapat menjadi solusi strategis bagi platform *streaming online* untuk meningkatkan retensi pengguna, keterlibatan, dan tentunya pendapatan bisnis, karena hingga 40% pendapatan platform berasal dari efektivitas sistem rekomendasi.
+Proyek ini difokuskan pada pengembangan sistem rekomendasi berbasis *Machine Learning* yang mampu memberikan saran konten secara cerdas dan relevan pada layanan *streaming online*. Sistem ini dirancang untuk menciptakan pengalaman pengguna yang lebih personal, dengan menghadirkan rekomendasi film atau serial yang sesuai dengan minat serta kebiasaan menonton masing-masing pengguna. Dengan adanya personalisasi ini, platform tidak hanya membuat pengguna lebih puas, tetapi sekaligus memperkuat loyalitas pelanggan dan berpeluang meningkatkan pendapatan secara berkelanjutan.
+
+**Manfaat Proyek**
+
+Dalam industri *streaming online*, memberikan rekomendasi konten yang tepat menjadi tantangan tersendiri. Sistem rekomendasi yang dihasilkan dari proyek ini mampu menjadi solusi efektif untuk memenuhi kebutuhan pengguna dengan konten yang lebih relevan. Selain memperkaya pengalaman pengguna, sistem ini juga berperan penting dalam meningkatkan interaksi, menjaga retensi pelanggan, serta mendukung pertumbuhan bisnis platform. Hal ini semakin penting mengingat sistem rekomendasi dapat berkontribusi hingga 40% terhadap total pendapatan platform *streaming*.
 
 ## 📚 Referensi
 
